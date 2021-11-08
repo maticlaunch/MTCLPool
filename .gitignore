@@ -1,0 +1,9 @@
+# dependencies
+/node_modules
+
+# production
+/build
+/config/keys.json
+
+npm-debug.log*
+package-lock.json
