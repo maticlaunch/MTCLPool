@@ -57,7 +57,7 @@ contract MTCLStaking is ReentrancyGuard {
         StakerInfo storage account = stakerInfos[msg.sender];
         uint256 minUnstakeTime = mtclInfo.getMinUnstakeTime();
         require(
-            account.lastUnstakedTimestamp + minUnstakeTime <= block.timestamp,
+            account.lastStakedTimestamp + minUnstakeTime <= block.timestamp,
             "Invalid unstake time"
         );
         require(account.balance > 0, "Nothing to unstake");
