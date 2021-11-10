@@ -265,6 +265,7 @@ contract MTCLPool {
         uint256 _vestingWindow,
         uint256 _vestingIteration
     ) external onlyPoolCreatorOrMTCLFactoryOrMTCLOwner {
+        require(listingReleasePercent <= 100);
         listingReleasePercent = _listingReleasePercent;
         vestingWindow = _vestingWindow;
         vestingIteration = _vestingIteration;
@@ -383,7 +384,10 @@ contract MTCLPool {
         uint256 minInvest;
         uint256 maxInvest;
 
-        if (openTime.add(MTCLInfoObj.getGuaranteedAllocationTime()) > block.timestamp) {
+        if (
+            openTime.add(MTCLInfoObj.getGuaranteedAllocationTime()) >
+            block.timestamp
+        ) {
             (minInvest, maxInvest) = getGuaranteedInvestAmount();
         } else {
             minInvest = minInvestInWei;
@@ -567,8 +571,8 @@ contract MTCLPool {
             claimTracker[msg.sender].sub(1)
         );
         require(claimableVestCount > 0);
-        claimable = totalClaimable.div(vestingIteration).mul(
-            claimableVestCount
+        claimable = totalClaimable.mul(claimableVestCount).div(
+            vestingIteration
         );
         claimTracker[msg.sender] = claimTracker[msg.sender].add(
             claimableVestCount

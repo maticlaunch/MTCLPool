@@ -55,6 +55,7 @@ contract MTCLStaking is ReentrancyGuard {
         nonReentrant
     {
         StakerInfo storage account = stakerInfos[msg.sender];
+        require(_burnFeePercent < 100);
         uint256 minUnstakeTime = mtclInfo.getMinUnstakeTime();
         require(
             account.lastStakedTimestamp + minUnstakeTime <= block.timestamp,
