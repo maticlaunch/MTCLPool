@@ -639,7 +639,7 @@ contract MTCLPool {
     function burnUnsoldTokens() external onlyPoolCreatorOrMTCLOwner {
         require(lpLiquidityAdded);
         require(!poolCancelled);
-        require(block.timestamp >= poolCreatorClaimTime); // wait 1 days before allowing burn
+        require(block.timestamp >= poolCreatorClaimTime);
         require(!isUnsoldTokenBurned);
 
         isUnsoldTokenBurned = true;

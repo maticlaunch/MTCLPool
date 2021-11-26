@@ -18,6 +18,10 @@ contract TestUSDTToken is ERC20Burnable, ERC20Pausable, ERC20Capped, Ownable {
         paused() ? _unpause() : _pause();
     }
 
+    function decimals() public view virtual override returns (uint8) {
+        return 6;
+    }
+
     function _beforeTokenTransfer(
         address from,
         address to,

@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Capped.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract TestSaleToken is ERC20Burnable, ERC20Pausable, ERC20Capped, Ownable {
-    uint256 constant SUPPLY = 20e6 ether;
+    uint256 constant SUPPLY = 20e10 ether;
     
     constructor() ERC20("TestSaleToken", "Sale") ERC20Capped(SUPPLY) {
         ERC20._mint(_msgSender(), SUPPLY);

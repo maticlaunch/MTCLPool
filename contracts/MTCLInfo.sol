@@ -8,8 +8,8 @@ import "../node_modules/@openzeppelin/contracts/utils/math/SafeMath.sol";
 contract MTCLInfo is Ownable {
     using SafeMath for uint256;
 
-    uint256 private devFeePercentage = 2; // fees going to dev AND MTCL hodlers (2% each)
-    uint256 private minDevFeeInWei = 5 ether; // min fee amount going to dev AND MTCL hodlers
+    uint256 private devFeePercentage = 2;
+    uint256 private minDevFeeInWei = 5 ether;
 
     address[] private poolAddresses; // track all pools created
 
